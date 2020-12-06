@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Login</h1>
+
+    <% if (errors.length > 0) { %>
+        <form action="/" method="POST">
+            <label for="email-input">email:</label>
+            <input value="<%= postedData.email %>" name="email" id="email-input" type="email" required>
+            <br><br>
+            <label for="pass-input">password:</label>
+            <input value="<%= postedData.password %>" name="password" id="pass-input" type="password" required>
+            <br>
+            <br>
+            <button type="submit">login</button>
+    
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        </form>
+
+        <% errors.forEach(error => { %>
+            <p style="color:red">* <%= error %></p>
+        <% }) %>
+
+    <% } else { %>
+        <form action="/" method="POST">
+            <label for="email-input">email:</label>
+            <input name="email" id="email-input" type="email" required>
+            <br><br>
+            <label for="pass-input">password:</label>
+            <input name="password" id="pass-input" type="password" required>
+            <br>
+            <br>
+            <button type="submit">login</button>
+    
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        </form>
+    <% } %>
+    <br>
+    <a href="/register">Dont have account?</a>
+</body>
+</html>
