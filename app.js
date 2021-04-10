@@ -46,8 +46,11 @@ app.use(passport.session())
 
 
 // routes
-const indexRouter = require('./routes/indexRouter')
-app.use('/', indexRouter)
+const authRouter = require('./routes/authRouter')
+app.use('/auth', authRouter)
+
+const adminRouter = require('./routes/adminRouter')
+app.use('/admin', adminRouter)
 
 
 

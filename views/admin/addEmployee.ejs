@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Navigace:</h3>
+    <ul>
+        <li><a href="/admin/employees">zaměstnanci</a></li>
+        <li><a href="/admin/customers">zákazníci</a></li>
+        <li><a href="/admin/repairs">opravy</a></li>
+        <li><a href="/auth/profile">účet</a></li>
+    </ul>
+    <h1>Přidat zaměstance</h1>
+    <a href="/admin/employees-add">přidat zaměstnance +</a>
+    
+    <form action="/admin/employees-add" method="post">
+        <p>Jméno a Příjmení</p>
+        <input type="text" name="name" required>
+        <p>Osobní číslo</p>
+        <input type="text" name="personal_number" required>
+
+        <button type="submit">uložit</button>
+    </form>
+</body>
+</html>

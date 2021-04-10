@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Navigace:</h3>
+    <ul>
+        <li><a href="/admin/employees">zaměstnanci</a></li>
+        <li><a href="/admin/customers">zákazníci</a></li>
+        <li><a href="/admin/repairs">opravy</a></li>
+        <li><a href="/auth/profile">účet</a></li>
+    </ul>
+    <h1>Zákazníci</h1>
+    <a href="/admin/customers-add">přidat zákazníka +</a>
+    <br><br>
+    <table>
+        <tr><th>Jméno</th><th>Adresa</th><th>Telefon</th><th>Email</th></tr>
+        <% data.forEach(function(e) { %>
+            <tr>
+                <td style="border-collapse: collapse; border: 1px solid black;"><%= e.name %></td>
+                <td style="border-collapse: collapse; border: 1px solid black;"><%= e.adress %></td>
+                <td style="border-collapse: collapse; border: 1px solid black;"><%= e.phone %></td>
+                <td style="border-collapse: collapse; border: 1px solid black;"><%= e.email %></td>
+                <td style="border-collapse: collapse; border: 1px solid black;">
+                    <a href="/admin/customers-remove/<%= e.id %> ">odstranit</a>
+                </td>
+            </tr>
+        <% }) %>
+    </table>
+</body>
+</html>

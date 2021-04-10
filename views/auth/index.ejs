@@ -9,7 +9,7 @@
     <h1>Login</h1>
 
     <% if (errors.length > 0) { %>
-        <form action="/" method="POST">
+        <form action="/auth" method="POST">
             <label for="email-input">email:</label>
             <input value="<%= postedData.email %>" name="email" id="email-input" type="email" required>
             <br><br>
@@ -27,7 +27,7 @@
         <% }) %>
 
     <% } else { %>
-        <form action="/" method="POST">
+        <form action="/auth" method="POST">
             <label for="email-input">email:</label>
             <input name="email" id="email-input" type="email" required>
             <br><br>
@@ -41,6 +41,6 @@
         </form>
     <% } %>
     <br>
-    <a href="/register">Dont have account?</a>
+    <a href="/auth/register">Dont have account?</a>
 </body>
 </html>
