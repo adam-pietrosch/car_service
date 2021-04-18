@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Navigace:</h3>
+    <ul>
+        <li><a href="/admin/employees">zaměstnanci</a></li>
+        <li><a href="/admin/customers">zákazníci</a></li>
+        <li><a href="/admin/repairs">opravy</a></li>
+        <li><a href="/auth/profile">účet</a></li>
+    </ul>
+    <h1>Upravit opravu: <%= data._id %></h1>
+    <a href="/admin/repairs">< všechny opravy</a>
+    
+    <form action="" method="post">
+        <p>Datum</p>
+        <input value="<%= data.date %>" type="text" name="date" required>
+        <p>Zaměstnanci (osobní číslo)</p>
+        <input value="<%= data.employees %>" type="text" name="employees" required>
+        <p>Popis závady</p>
+        <input value="<%= data.problem_description %>" type="text" name="problem_description" required>
+        <p>Vyměnené součástky</p>
+        <input value="<%= data.replaced_parts %>" type="text" name="replaced_parts" required>
+        <p>Čas v hodinách</p>
+        <input value="<%= data.time %>" type="number" name="time" required>
+        <p>Náklady</p>
+        <input value="<%= data.costs %>" type="text" name="costs" required>
+
+        <button type="submit">uložit</button>
+    </form>
+</body>
+</html>

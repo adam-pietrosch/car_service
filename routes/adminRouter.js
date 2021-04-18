@@ -15,9 +15,11 @@ router.get('/employees', async (req, res) => {
         data
     })
 })
+
 router.get('/employees-add', async (req, res) => {
     res.render('admin/addEmployee')
 })
+
 router.post('/employees-add', async (req, res) => {
     const employee = new Employee({
         name: req.body.name,
@@ -26,10 +28,33 @@ router.post('/employees-add', async (req, res) => {
     await employee.save()
     res.redirect('/admin/employees')
 })
+
 router.get('/employees-remove/:id', async (req, res) => {
     await Employee.deleteOne({ _id: req.params.id })
     res.redirect('/admin/employees')
 })
+
+router.get('/employees-edit/:id', async (req, res) => {
+    const employee = await Employee.findOne({ _id: req.params.id })
+
+    res.render('admin/editEmployee', { data: employee })
+})
+
+router.post('/employees-edit/:id', async (req, res) => {
+    const employee = await Employee.findOne({ _id: req.params.id })
+
+    const newValues = {
+        $set: {
+            name: req.body.name,
+            personal_number: req.body.personal_number
+        }
+    };
+
+    await Employee.updateOne(employee, newValues)
+
+    res.redirect(`/admin/employees`)
+})
+
 
 
 // customers
@@ -57,6 +82,29 @@ router.get('/customers-remove/:id', async (req, res) => {
     await Owner.deleteOne({ _id: req.params.id })
     res.redirect('/admin/customers')
 })
+router.get('/customers-edit/:id', async (req, res) => {
+    const customer = await Owner.findOne({ _id: req.params.id })
+
+    res.render('admin/editCustomer', { data: customer })
+})
+
+router.post('/customers-edit/:id', async (req, res) => {
+    const customer = await Owner.findOne({ _id: req.params.id })
+
+    const newValues = {
+        $set: {
+            name: req.body.name,
+            adress: req.body.adress,
+            phone: req.body.phone,
+            email: req.body.email,
+        }
+    };
+
+    await Owner.updateOne(customer, newValues)
+
+    res.redirect(`/admin/customers`)
+})
+
 
 
 // repairs
@@ -86,6 +134,32 @@ router.get('/repairs-remove/:id', async (req, res) => {
     await Repair.deleteOne({ _id: req.params.id })
     res.redirect('/admin/repairs')
 })
+
+router.get('/repairs-edit/:id', async (req, res) => {
+    const repair = await Repair.findOne({ _id: req.params.id })
+
+    res.render('admin/editRepair', { data: repair})
+})
+
+router.post('/repairs-edit/:id', async (req, res) => {
+    const repair = await Repair.findOne({ _id: req.params.id })
+
+    const newValues = {
+        $set: {
+            date: req.body.date,
+            employees: req.body.employees,
+            problem_description: req.body.problem_description,
+            replaced_parts: req.body.replaced_parts,
+            time: req.body.time,
+            costs: req.body.costs
+        }
+    };
+
+    await Repair.updateOne(repair, newValues)
+
+    res.redirect(`/admin/repairs`)
+})
+
 
 
 // PROTECT ROUTES

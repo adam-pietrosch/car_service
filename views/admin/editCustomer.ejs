@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Navigace:</h3>
+    <ul>
+        <li><a href="/admin/employees">zaměstnanci</a></li>
+        <li><a href="/admin/customers">zákazníci</a></li>
+        <li><a href="/admin/repairs">opravy</a></li>
+        <li><a href="/auth/profile">účet</a></li>
+    </ul>
+    <h1>Upravit zákazníka: <%= data.name %></h1>
+    <a href="/admin/customers">< všichni zákazníci</a>
+    
+    <form action="" method="post">
+        <p>Jméno a Příjmení</p>
+        <input value="<%= data.name %>"type="text" name="name" required>
+        <p>Email</p>
+        <input value="<%= data.email %>" type="email" name="email" required>
+        <p>Telefon</p>
+        <input value="<%= data.phone %>" type="text" name="phone" required>
+        <p>Adresa</p>
+        <input value="<%= data.adress %>" type="text" name="adress" required>
+
+        <button type="submit">uložit</button>
+    </form>
+</body>
+</html>
