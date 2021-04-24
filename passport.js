@@ -40,16 +40,21 @@ passport.use('local.login', new localStrategy({
     usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true
-}, async (req, email, password, done) => {
+}, 
+async (req, email, password, done) => {
+
     req.flash('postedData', req.body)
+    
     const user = await User.findOne({ email: email })
     if (user == null) {
         return done(null, false, { message: 'Špatný email.' })
     }
+
     const isPassValid = await bcrypt.compare(password, user.password)
     if (!isPassValid) {
         return done(null, false, { message: 'Špatné heslo.' })
     }
+
     return done(null, user)
 }
 ))

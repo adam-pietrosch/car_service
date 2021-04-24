@@ -28,7 +28,7 @@ require('./passport')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: '1234',
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({
